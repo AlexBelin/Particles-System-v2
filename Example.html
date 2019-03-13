@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        body{
+            background-color: #333333;
+        }
+        .global{
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            z-index: 1;
+        }
+
+        .area{
+            position: relative;
+            top: 0;
+            width: 1000px;
+            height: 100%;
+            margin: 0 auto;
+        }
+
+        .particle{
+            /*background: url('http://pngimg.com/uploads/mickey_mouse/mickey_mouse_PNG7.png') top left no-repeat;
+            background-size: cover;*/
+            background-color: #666;
+            background: -moz-radial-gradient(center, ellipse cover, rgba(49,183,249,1) 0%, rgba(125,185,232,0) 70%);
+            background: -webkit-radial-gradient(center, ellipse cover, rgba(49,183,249,1) 0%,rgba(125,185,232,0) 70%);
+            background: radial-gradient(ellipse at center, rgba(49,183,249,1) 0%,rgba(125,185,232,0) 70%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#31b7f9', endColorstr='#007db9e8',GradientType=1 );
+        }
+        .particle2{
+            /*background: url('http://pngimg.com/uploads/mickey_mouse/mickey_mouse_PNG7.png') top left no-repeat;
+            background-size: cover;*/
+            background-color: #666;
+            background: -moz-radial-gradient(center, ellipse cover, rgb(249, 156, 49) 0%, rgba(125,185,232,0) 70%);
+            background: -webkit-radial-gradient(center, ellipse cover, rgba(249, 156, 49) 0%,rgba(125,185,232,0) 70%);
+            background: radial-gradient(ellipse at center, rgba(249, 156, 49) 0%,rgba(125,185,232,0) 70%);
+            filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#31b7f9', endColorstr='#007db9e8',GradientType=1 );
+        }
+        .particle3{
+            background: url('https://clipart.info/images/ccovers/1516938336sparkle-png-transparent.png') top left no-repeat;
+            background-size: 100%;
+        }
+
+        .ball2{
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            top: 200px;
+            left: 200px;
+            -webkit-animation: mymoveball2 2s infinite linear;
+            animation: mymoveball2 2s infinite linear;
+        }
+        @-webkit-keyframes mymoveball2 {
+            0% {width: 50px;}
+            50% {width: 200px;}
+            100% {width: 50px;}
+        }
+
+        @keyframes mymoveball2 {
+            0% {width: 50px;}
+            50% {width: 200px;}
+            100% {width: 50px;}
+        }
+
+        .ball-explosion{
+            position: absolute;
+            width: 50px;
+            height: 50px;
+            z-index: 1000000;
+            top: 200px;
+            right: 200px;
+        }
+
+        .ball{
+            position: absolute;
+            width: 200px;
+            height: 10px;
+            z-index: 1000000;
+            top: 100px;
+            left: 400px;
+            transition: width 2s, height 2s;
+            -webkit-animation: mymove 5s infinite linear;
+            animation: mymove 5s infinite linear;
+        }
+        @-webkit-keyframes mymove {
+            0% {top: 100px;}
+            100% {top: 400px;}
+        }
+
+        @keyframes mymove {
+            0% {top: 100px;}
+            100% {top: 400px;}
+        }
+    </style>
+</head>
+<body>
+    
+    <div id="global" class="global">
+        <div class="area" id="fight-area">
+            <div class="ball" id="ball"></div>
+            <div class="ball2" id="ball2" style="z-index: 150;"></div>
+            <div class="ball-explosion" id="ball-explosion"></div>
+        </div>
+    </div>
+
+    <div style="height: 10px; width: 200px; border-bottom: 1px solid rgb(76, 154, 255); position: absolute; top: 500px; left: 500px;"></div>
+
+    <script src="ParticlesSystem.js" type="text/javascript"></script>
+        
+    <script>
+        /*=====================================*/
+        /*                                     */
+        /*           E X A M P L E S           */
+        /*                                     */
+        /*=====================================*/
+
+        var _Particles = new ParticleSys('ball', 'ball-particles1', 'particle2', 1000, 6, 20, 10, 20, [0, -1]);
+        _Particles.RenderParticles();
+
+        var _Particles2 = new ParticleSys('ball', 'ball-particles2', 'particle', 2000, 30, 120, 300, 20, [0.5, -1]);
+        _Particles2.RenderParticles();
+
+        var _Particles3 = new ParticleExplosionSys('ball-explosion', 'ball-explosion', 'particle', 600, 10, 80, 250, 60);
+        _Particles3.RenderParticles();
+        var _Particles4 = new ParticleExplosionSys('ball-explosion', 'ball-explosion-2', 'particle3', 1000, 10, 30, 150, 60);
+        _Particles4.RenderParticles();
+
+        var _Particles5 = new ParticleSys('ball2', 'ball2-particles5', 'particle3', 1000, 6, 40, 300, 6, [0, 1]);
+        _Particles5.RenderParticles();
+
+    </script>
+
+</body>
+</html>
